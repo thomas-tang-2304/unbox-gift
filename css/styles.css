@@ -29,5 +29,6 @@ div.speech-div {
 }
 
 *, #speech-txt {
+  font-size: 11px !important;
   font-family: 'Playpen Sans', cursive;
 }

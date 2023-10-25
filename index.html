@@ -86,6 +86,16 @@
 
             bubble.querySelector("#speech-txt").innerHTML = speechText;
 
+             setTimeout(() => {
+                bubble.style.display = "block";
+                bubble.querySelector("#speech-txt").innerHTML = speechText;
+            }, 1000)
+
+            setTimeout(() => {
+                bubble.style.display = "none";
+
+            }, 5000)
+
             return setInterval(() => {
 
                 setTimeout(() => {
@@ -97,7 +107,7 @@
                     bubble.style.display = "none";
 
                 }, 5000)
-            }, 3000)
+            }, 5000)
 
         }
 
@@ -126,13 +136,14 @@
             switch (clickCount) {
                 case 1:
 
-                    gift_button.style = `top: 90vh; left: 80vw;`;
+                    gift_button.style = `top: 80vh; left: 80vw;`;
                     popAnimate(gift_button.querySelector("img.gift"), 600, 'gelatine', false);
                     clickHandler(gift_button, 1000)
                     break;
                 case 2:
                     gift_button.style = `top: 10vh; left: 80vw;`;
-                    popAnimate(gift_button.querySelector("img.gift"), 600, 'gelatine', false);
+                    popAnimate(gift_button.querySelector("img.gift"), 300, 'spin-in linear', false);
+                    popAnimate(gift_button.querySelector("img.gift"), 300, 'spin-out linear', false);
                     clickHandler(gift_button, 1000)
                     break;
                 case 3:
@@ -141,18 +152,18 @@
                     clickHandler(gift_button, 1000)
                     break;
                 case 4:
-                    gift_button.style = `top: 90vh; left: 25vw;`;
+                    gift_button.style = `top: 80vh; left: 25vw;`;
                     popAnimate(gift_button.querySelector("img.gift"), 600, 'gelatine', false);
                     clickHandler(gift_button, 1000)
                     break;
                 case 5:
-                    gift_button.style = `top: 90vh; left: 25vw;`;
-                    popAnimate(gift_button.querySelector("img.gift"), 3000, 'hinge', false);
+                    // gift_button.style = `top: 90vh; left: 25vw;`;
+                    popAnimate(gift_button.querySelector("img.gift"), 3500, 'hinge', false);
+                    clickHandler(gift_button, 5000)
                     setTimeout(() => {
                         gift_button.style = `top: 50vh; left: 45vw;`;
-                        popAnimate(gift_button.querySelector("img.gift"), 2000, 'bounce-in-right', false);
-                    }, 3000)
-                    clickHandler(gift_button, 4000)
+                        popAnimate(gift_button.querySelector("img.gift"), 3500, 'bounce-in-right', false);
+                    }, 3500)
                     break;
                 case 6:
                     gift_button.style = `top: 80vh; left: 70vw;`;
@@ -165,12 +176,23 @@
                     clickHandler(gift_button, 1000)
                     break;
                 case 7:
-                    popAnimate(gift_button.querySelector("img.gift"), 3000, 'roll-out', false);
+                    popAnimate(gift_button.querySelector("img.gift"), 3500, 'roll-out', false);
+                    gift_button.style = `top: 65vh; left: 65vw;`;
+                    clickHandler(gift_button, 5000)
                     setTimeout(() => {
                         gift_button.style = `top: 22vh; left: 65vw;`;
-                        popAnimate(gift_button.querySelector("img.gift"), 2000, 'bounce-in', false);
-                    }, 3000)
-                    clickHandler(gift_button, 4000)
+                        popAnimate(gift_button.querySelector("img.gift"), 3500, 'bounce-in', false);
+                    }, 3500)
+                    break;
+
+                case 8:
+                    popAnimate(gift_button.querySelector("img.gift"), 3500, 'spin-in', false);
+                    gift_button.style = `opacity: 0;`;
+                    clickHandler(gift_button, 5000)
+                    setTimeout(() => {
+                        gift_button.style = `top: 70vh; left: 25vw;`;
+                        popAnimate(gift_button.querySelector("img.gift"), 3500, 'spin-out', false);
+                    }, 3500)
                     break;
 
 
@@ -200,7 +222,7 @@
 
             }
 
-            if (clickCount == 8) {
+            if (clickCount == 9) {
                 finished = true;
                 gift_button.style = `top: 50%; left: 50%;`;
                 loop();

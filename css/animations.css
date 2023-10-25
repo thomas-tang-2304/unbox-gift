@@ -413,3 +413,28 @@ p {
     transform: translateX(100%) rotate(120deg);
   }
 }
+
+@keyframes spin-in {
+  0% {
+    opacity: 1;
+    /* transform: rotate(360deg) scale(1); */
+  }
+
+  100% {
+    opacity: 0;
+    transform: rotate(360deg) scale(0);
+  }
+}
+
+@keyframes spin-out {
+  0% {
+    opacity: 0;
+    /* transform: rotate(360deg) scale(1); */
+    transform: rotate(0deg) scale(0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: rotate(-360deg) scale(1);
+  }
+}
