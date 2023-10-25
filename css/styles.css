@@ -1,0 +1,33 @@
+body {
+  position: fixed;
+  margin: 0;
+  background: #020202;
+  cursor: crosshair;
+}
+img.gift {
+  width: 100%;
+}
+
+img.gift_image {
+  width: 278px;
+  height: 300px;
+  
+}
+
+button.gelatine.button {
+  position: absolute;
+  transition: all 1.2s, height 0.4s;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: none;
+  border: none;
+}
+
+div.speech-div {
+  height: 60px;
+}
+
+*, #speech-txt {
+  font-family: 'Playpen Sans', cursive;
+}

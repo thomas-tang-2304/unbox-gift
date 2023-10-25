@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/animations.css">
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/bubble.css">
+    <link rel="stylesheet" href="./css/birthday_firework.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playpen+Sans&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <canvas id="birthday">
+
+    </canvas>
+    <div class="cell">
+
+        <button class="circle gelatine button">
+            <div class="speech-div">
+
+                <div id="speech-bubble">
+                    <div id="bub-part-a"></div>
+                    <div id="bub-part-b"></div>
+                    <div id="bub-part-c"></div>
+                    <div id="speech-txt"></div>
+                    <div id="bub-part-c"></div>
+                    <div id="bub-part-b"></div>
+                    <div id="bub-part-a"></div>
+
+                    <div id="speech-arrow">
+                        <div id="arrow-w"></div>
+                        <div id="arrow-x"></div>
+                        <div id="arrow-y"></div>
+                        <div id="arrow-z"></div>
+                    </div><!--end arrow-->
+                </div><!--end speech bubble-->
+            </div>
+            <img class="gift" src="imgs/gift (1).png" alt="">
+        </button>
+    </div>
+
+    <script>
+
+        const popAnimate = (element, duration, animationName, infinite) => {
+            const second = duration / 1000;
+            element.style.animation = `${animationName} ${second}s ${infinite ? "infinite" : ""}`
+            let myTo = setTimeout(() => {
+                element.style.animation = "unset";
+            }, duration);
+
+            if (infinite) {
+                clearTimeout(myTo);
+
+            }
+        }
+
+        function clickHandler(button, time) {
+            console.log('Button clicked');
+
+            button.disabled = true;
+
+            setTimeout(() => {
+                button.disabled = false;
+            }, time);
+        }
+
+        const getWindowScreen = () => {
+
+            var win = window,
+                doc = document,
+                docElem = doc.documentElement,
+                body = doc.getElementsByTagName('body')[0],
+                x = win.innerWidth || docElem.clientWidth || body.clientWidth,
+                y = win.innerHeight || docElem.clientHeight || body.clientHeight;
+            return { x, y }
+        }
+
+        const anHienBox = (speechText) => {
+
+            bubble.querySelector("#speech-txt").innerHTML = speechText;
+
+            return setInterval(() => {
+
+                setTimeout(() => {
+                    bubble.style.display = "block";
+                    bubble.querySelector("#speech-txt").innerHTML = speechText;
+                }, 1000)
+
+                setTimeout(() => {
+                    bubble.style.display = "none";
+
+                }, 5000)
+            }, 3000)
+
+        }
+
+    </script>
+
+    <script src="./js/birthday.js">
+
+    </script>
+
+    <script>
+
+        const gift_button = document.querySelector(".button");
+
+        const bubble = document.querySelector("#speech-bubble");
+
+        const gift_image = document.querySelector(".button .gift");
+
+        const myItv = (anHienBox("Nhấp vào đây để mở quà"));
+
+        let clickCount = 0;
+        let finished = false
+
+        gift_button.addEventListener("click", () => {
+            clickCount++;
+
+            switch (clickCount) {
+                case 1:
+
+                    gift_button.style = `top: 90vh; left: 80vw;`;
+                    popAnimate(gift_button.querySelector("img.gift"), 600, 'gelatine', false);
+                    clickHandler(gift_button, 1000)
+                    break;
+                case 2:
+                    gift_button.style = `top: 10vh; left: 80vw;`;
+                    popAnimate(gift_button.querySelector("img.gift"), 600, 'gelatine', false);
+                    clickHandler(gift_button, 1000)
+                    break;
+                case 3:
+                    gift_button.style = `top: 10vh; left: 35vw;`;
+                    popAnimate(gift_button.querySelector("img.gift"), 600, 'gelatine', false);
+                    clickHandler(gift_button, 1000)
+                    break;
+                case 4:
+                    gift_button.style = `top: 90vh; left: 25vw;`;
+                    popAnimate(gift_button.querySelector("img.gift"), 600, 'gelatine', false);
+                    clickHandler(gift_button, 1000)
+                    break;
+                case 5:
+                    gift_button.style = `top: 90vh; left: 25vw;`;
+                    popAnimate(gift_button.querySelector("img.gift"), 3000, 'hinge', false);
+                    setTimeout(() => {
+                        gift_button.style = `top: 50vh; left: 45vw;`;
+                        popAnimate(gift_button.querySelector("img.gift"), 2000, 'bounce-in-right', false);
+                    }, 3000)
+                    clickHandler(gift_button, 4000)
+                    break;
+                case 6:
+                    gift_button.style = `top: 80vh; left: 70vw;`;
+                    popAnimate(gift_button.querySelector("img.gift"), 600, 'gelatine', false);
+                    clickHandler(gift_button, 1000)
+                    break;
+                case 6:
+                    gift_button.style = `top: 65vh; left: 22vw;`;
+                    popAnimate(gift_button.querySelector("img.gift"), 600, 'gelatine', false);
+                    clickHandler(gift_button, 1000)
+                    break;
+                case 7:
+                    popAnimate(gift_button.querySelector("img.gift"), 3000, 'roll-out', false);
+                    setTimeout(() => {
+                        gift_button.style = `top: 22vh; left: 65vw;`;
+                        popAnimate(gift_button.querySelector("img.gift"), 2000, 'bounce-in', false);
+                    }, 3000)
+                    clickHandler(gift_button, 4000)
+                    break;
+
+
+                default:
+                    break;
+            }
+
+
+
+            clearInterval(myItv);
+
+            bubble.style.display = "none";
+            if (clickCount == 3) {
+                setTimeout(() => {
+
+                    bubble.style.display = "block";
+                    bubble.querySelector("#speech-txt").innerHTML = "đố anh bắt được em =))))";
+                }, 600);
+            }
+
+            if (clickCount == 6) {
+                setTimeout(() => {
+
+                    bubble.style.display = "block";
+                    bubble.querySelector("#speech-txt").innerHTML = "sắp bắt được rồi =)))) cố lên";
+                }, 600);
+
+            }
+
+            if (clickCount == 8) {
+                finished = true;
+                gift_button.style = `top: 50%; left: 50%;`;
+                loop();
+                setTimeout(() => {
+
+                    bubble.style.display = "block";
+                    bubble.querySelector("#speech-txt").innerHTML = "HPBD chị Yến <3";
+
+                    popAnimate(gift_button.querySelector("img.gift"), 3000, 'hithere', true);
+                }, 600);
+                setTimeout(() => {
+                    popAnimate(gift_button.querySelector("img.gift"), 3000, 'fade-out-down', false);
+                }, 3000);
+                setTimeout(() => {
+
+                    bubble.querySelector("#speech-txt").innerHTML = "Tặng chị Yến hộp nến thơm, chúc chị sinh nhật vui vẻ, kiếm đc nhìu tiền và niềm vui trong công việc, xinh đẹp hơn để mọi người đều phải ngước nhìn nhé :3";
+
+                    gift_button.style.height = "400px";
+                    gift_button.style.justifyContent = "space-between";
+                    gift_button.querySelector("img.gift").style = 'width:278px; height: 300px;';
+                    gift_button.querySelector("img.gift").className = 'gift-image';
+                    gift_button.querySelector("img.gift-image").src = "./imgs/nen_thom_crush.jpg";
+
+                }, 6000)
+
+                gift_button.disabled = true;
+            }
+
+        })
+
+
+    </script>
+
+
+
+</body>
+
+
+</html>
